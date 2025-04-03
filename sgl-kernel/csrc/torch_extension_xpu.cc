@@ -16,22 +16,7 @@ limitations under the License.
 #include <Python.h>
 #include <ATen/core/dispatch/Dispatcher.h>
 #include <torch/library.h>
-// #include "sgl_kernel_ops.h" // Failed to build due to include torch.h and missing py_Buffer, refer to https://github.com/pytorch/pytorch/issues/149796
-// #include <torch/torch.h>
-
-#define _CONCAT(A, B) A##B
-#define CONCAT(A, B) _CONCAT(A, B)
-
-#define _STRINGIFY(A) #A
-#define STRINGIFY(A) _STRINGIFY(A)
-
-#define TORCH_LIBRARY_EXPAND(NAME, MODULE) TORCH_LIBRARY(NAME, MODULE)
-
-#define REGISTER_EXTENSION(NAME)                                                                      \
-  PyMODINIT_FUNC CONCAT(PyInit_, NAME)() {                                                            \
-    static struct PyModuleDef module = {PyModuleDef_HEAD_INIT, STRINGIFY(NAME), nullptr, 0, nullptr}; \
-    return PyModule_Create(&module);                                                                  \
-  }
+#include "sgl_kernel_ops.h"
 
 namespace at {
 namespace native {

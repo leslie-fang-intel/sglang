@@ -69,7 +69,7 @@ ext_modules = [
         },
         libraries=libraries,
         extra_link_args=extra_link_args,
-        py_limited_api=True,
+        py_limited_api=False,
     ),
 ]
 
@@ -80,5 +80,5 @@ setup(
     package_dir={"": "python"},
     ext_modules=ext_modules,
     cmdclass={"build_ext": BuildExtension.with_options(use_ninja=True)},
-    options={"bdist_wheel": {"py_limited_api": "cp39"}},
+    # options={"bdist_wheel": {"py_limited_api": "cp39"}},
 )
